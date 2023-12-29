@@ -1,4 +1,4 @@
-package com.br.stream.processamentoDeVideo.adaptadores;
+package com.br.stream.processamentoDeVideo.adapters;
 
 import software.amazon.awssdk.services.mediaconvert.model.AudioSelector;
 import software.amazon.awssdk.services.mediaconvert.model.CreateJobResponse;

@@ -1,6 +1,6 @@
 package com.br.stream.processamentoDeVideo.infra.processarMidias.fabrica;
 
-import com.br.stream.processamentoDeVideo.adaptadores.Job;
+import com.br.stream.processamentoDeVideo.adapters.Job;
 import com.br.stream.processamentoDeVideo.infra.processarMidias.BitRate;
 import com.br.stream.processamentoDeVideo.infra.processarMidias.MediaConvert;
 import com.br.stream.processamentoDeVideo.infra.processarMidias.S3.EndpointS3;
@@ -30,7 +30,7 @@ public class HLSJob implements Job {
 	private MediaConvertClient mediaConvertClient;
 
 	@Autowired
-	HLSJob(AppleHLSContainer appleHLSContainer, EndpointS3 endpointS3) {
+	public HLSJob(AppleHLSContainer appleHLSContainer, EndpointS3 endpointS3) {
 		this.appleHLSContainer = appleHLSContainer;
 		this.endpointS3 = endpointS3;
 	}

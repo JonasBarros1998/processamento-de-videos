@@ -1,6 +1,6 @@
 package com.br.stream.processamentoDeVideo.useCase;
 
-import com.br.stream.processamentoDeVideo.adaptadores.Job;
+import com.br.stream.processamentoDeVideo.adapters.Job;
 import com.br.stream.processamentoDeVideo.domain.ProcessarVideos;
 import com.br.stream.processamentoDeVideo.view.DTO.ProcessarMidiasDTO;
 import com.br.stream.processamentoDeVideo.view.form.ProcessarMidiasForm;
