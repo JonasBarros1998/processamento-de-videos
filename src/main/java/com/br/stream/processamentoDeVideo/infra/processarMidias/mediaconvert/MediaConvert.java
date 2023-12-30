@@ -1,4 +1,4 @@
-package com.br.stream.processamentoDeVideo.infra.processarMidias;
+package com.br.stream.processamentoDeVideo.infra.processarMidias.mediaconvert;
 
 import com.br.stream.processamentoDeVideo.infra.processarMidias.S3.EndpointS3;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,6 @@ public class MediaConvert {
 		try {
 			return mediaConvertClient
 				.describeEndpoints(DescribeEndpointsRequest.builder().maxResults(20).build());
-
 
 		} catch (Exception ex) {
 			throw new RuntimeException(ex.getMessage());

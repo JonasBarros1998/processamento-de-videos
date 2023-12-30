@@ -2,7 +2,7 @@ package com.br.stream.processamentoDeVideo.infra.processarMidias.fabrica;
 
 import com.br.stream.processamentoDeVideo.adapters.Job;
 import com.br.stream.processamentoDeVideo.infra.processarMidias.BitRate;
-import com.br.stream.processamentoDeVideo.infra.processarMidias.MediaConvert;
+import com.br.stream.processamentoDeVideo.infra.processarMidias.mediaconvert.MediaConvert;
 import com.br.stream.processamentoDeVideo.infra.processarMidias.S3.EndpointS3;
 import com.br.stream.processamentoDeVideo.infra.processarMidias.audio.TrilhasDeAudio;
 import com.br.stream.processamentoDeVideo.infra.processarMidias.gruposDeSaida.AppleHLSContainer;
