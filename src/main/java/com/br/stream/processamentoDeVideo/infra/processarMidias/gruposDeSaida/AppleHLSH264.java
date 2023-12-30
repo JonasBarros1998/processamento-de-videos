@@ -6,6 +6,7 @@ import software.amazon.awssdk.services.mediaconvert.model.*;
 public class AppleHLSH264 {
 
 	private final String nome;
+
 	private final String segmento;
 
 	private final Integer resolucaoX;

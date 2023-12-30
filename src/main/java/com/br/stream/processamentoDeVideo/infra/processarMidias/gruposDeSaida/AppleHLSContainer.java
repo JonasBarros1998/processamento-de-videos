@@ -8,7 +8,7 @@ import software.amazon.awssdk.services.mediaconvert.model.*;
 @Component
 public class AppleHLSContainer {
 
-	private EndpointS3 endpointS3;
+	private final EndpointS3 endpointS3;
 
 	@Autowired
 	AppleHLSContainer(EndpointS3 endpointS3) {
@@ -19,9 +19,9 @@ public class AppleHLSContainer {
 		return this.appleHLSContainer(gruposDeSaida);
 	}
 
-	OutputGroup appleHLSContainer(Output... gruposDeSaida) {
+	private OutputGroup appleHLSContainer(Output... gruposDeSaida) {
 
-		return OutputGroup.builder().name("Apple HLS").customName("Example")
+		return OutputGroup.builder().name("Apple HLS").customName("HLS Container")
 			.outputGroupSettings(OutputGroupSettings.builder().type(OutputGroupType.HLS_GROUP_SETTINGS)
 				.hlsGroupSettings(HlsGroupSettings.builder()
 					.directoryStructure(HlsDirectoryStructure.SINGLE_DIRECTORY)
@@ -33,9 +33,13 @@ public class AppleHLSContainer {
 					.codecSpecification(HlsCodecSpecification.RFC_4281)
 					.outputSelection(HlsOutputSelection.MANIFESTS_AND_SEGMENTS)
 					.programDateTime(HlsProgramDateTime.EXCLUDE)
-					.timedMetadataId3Frame(HlsTimedMetadataId3Frame.PRIV).timedMetadataId3Period(10)
-					.destination(this.endpointS3.criarEndpointDeSaida()).segmentControl(HlsSegmentControl.SEGMENTED_FILES)
-					.minFinalSegmentLength((double) 0).segmentLength(10).minSegmentLength(0).build())
+					.timedMetadataId3Frame(HlsTimedMetadataId3Frame.PRIV)
+					.timedMetadataId3Period(10)
+					.destination(endpointS3.criarEndpointDeSaida())
+					.segmentControl(HlsSegmentControl.SEGMENTED_FILES)
+					.minFinalSegmentLength((double) 0)
+					.segmentLength(10)
+					.minSegmentLength(0).build())
 				.build())
 			.outputs(gruposDeSaida).build();
 
