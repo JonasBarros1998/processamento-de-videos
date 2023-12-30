@@ -8,14 +8,13 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.mediaconvert.MediaConvertClient;
 import software.amazon.awssdk.services.mediaconvert.model.DescribeEndpointsRequest;
 import software.amazon.awssdk.services.mediaconvert.model.DescribeEndpointsResponse;
+import software.amazon.awssdk.services.mediaconvert.model.MediaConvertException;
 
 import java.net.URI;
 
 public class MediaConvert {
 
-	private final Region regiao = Region.US_EAST_1;
-
-	public MediaConvert() {}
+	private static final Region regiao = Region.US_EAST_1;
 
 	public MediaConvertClient criar() {
 
@@ -25,19 +24,14 @@ public class MediaConvert {
 			.build();
 	}
 
-	private DescribeEndpointsResponse criarEndpointMediaConvert() {
+	private DescribeEndpointsResponse criarEndpointMediaConvert() throws MediaConvertException {
 		MediaConvertClient mediaConvertClient = MediaConvertClient.builder()
 			.region(regiao)
 			.credentialsProvider(ProfileCredentialsProvider.create())
 			.build();
 
-		try {
-			return mediaConvertClient
-				.describeEndpoints(DescribeEndpointsRequest.builder().maxResults(20).build());
-
-		} catch (Exception ex) {
-			throw new RuntimeException(ex.getMessage());
-		}
+		return mediaConvertClient
+			.describeEndpoints(DescribeEndpointsRequest.builder().maxResults(20).build());
 
 	}
 

@@ -10,6 +10,7 @@ import org.springframework.test.context.ActiveProfiles;
 import software.amazon.awssdk.services.mediaconvert.MediaConvertClient;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -38,4 +39,5 @@ class MediaConvertTest {
 		//Assert
 		assertThat(mediaConvertClient).isInstanceOf(MediaConvertClient.class);
 	}
+
 }
