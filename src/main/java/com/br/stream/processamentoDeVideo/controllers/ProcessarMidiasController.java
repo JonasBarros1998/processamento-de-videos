@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ProcessarVideosController {
+public class ProcessarMidiasController {
 
 	private CriarJobParaProcessamentoDeMidias criarJobParaProcessamentoDeMidias;
 
 	@Autowired
-	ProcessarVideosController(CriarJobParaProcessamentoDeMidias criarJobParaProcessamentoDeMidias) {
+	ProcessarMidiasController(CriarJobParaProcessamentoDeMidias criarJobParaProcessamentoDeMidias) {
 		this.criarJobParaProcessamentoDeMidias = criarJobParaProcessamentoDeMidias;
 	}
 

@@ -1,0 +1,7 @@
+aplicacao:
+  s3:
+    buckets:
+      videos-processados: "midias-processadas-testes"
+      videos-nao-processados: "midias-nao-processadas-testes"
+  iam:
+    arn: "arn:aws:iam::000000000000:role/processamento_de_videos_test"

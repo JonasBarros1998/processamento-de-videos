@@ -7,7 +7,6 @@ import software.amazon.awssdk.services.mediaconvert.model.AudioDefaultSelection;
 import software.amazon.awssdk.services.mediaconvert.model.AudioSelector;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
