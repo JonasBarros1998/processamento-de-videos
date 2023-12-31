@@ -9,7 +9,7 @@ import java.util.Map;
 
 public interface Job {
 
-	void criar(String midiaDeEntrada);
+	CreateJobResponse criar(String midiaDeEntrada);
 
 	JobSettings configurarJob(OutputGroup gruposDeSaida, Map<String, AudioSelector> trilhaDeAudio);
 

@@ -10,7 +10,6 @@ import com.br.stream.processamentoDeVideo.infra.processarMidias.gruposDeSaida.Ap
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import software.amazon.awssdk.services.mediaconvert.MediaConvertClient;
 import software.amazon.awssdk.services.mediaconvert.model.*;
 
 import java.util.Map;
@@ -18,16 +17,14 @@ import java.util.Map;
 @Component
 public class HLSJob implements Job {
 
-	private AppleHLSContainer appleHLSContainer;
+	private final AppleHLSContainer appleHLSContainer;
 
-	private EndpointS3 endpointS3;
+	private final EndpointS3 endpointS3;
+
+	private final MediaConvert mediaConvert = new MediaConvert();
 
 	@Value("${aplicacao.iam.arn}")
 	private String ARN;
-
-	private MediaConvert mediaConvert = new MediaConvert();
-
-	private MediaConvertClient mediaConvertClient;
 
 	@Autowired
 	public HLSJob(AppleHLSContainer appleHLSContainer, EndpointS3 endpointS3) {
@@ -35,24 +32,17 @@ public class HLSJob implements Job {
 		this.endpointS3 = endpointS3;
 	}
 
-	public void criar(String midiaDeEntrada) {
+	public CreateJobResponse criar(String midiaDeEntrada) {
 
-		try {
-			this.mediaConvertClient = this.mediaConvert.criar();
+		this.endpointS3.setNomeDaMidiaOriginal(midiaDeEntrada);
 
-			this.endpointS3.setNomeDaMidiaOriginal(midiaDeEntrada);
+		Map<String, AudioSelector> trilhasDeAudio = this.criarTrilhasDeAudio();
 
-			Map<String, AudioSelector> trilhasDeAudio = this.criarTrilhasDeAudio();
+		OutputGroup codecs = this.criarCodecs();
 
-			OutputGroup codecs = this.criarCodecs();
+		JobSettings configurarJOB = this.configurarJob(codecs, trilhasDeAudio);
 
-			JobSettings configurarJOB = this.configurarJob(codecs, trilhasDeAudio);
-
-			this.construirJob(configurarJOB);
-
-		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
-		}
+		return this.construirJob(configurarJOB);
 
 	}
 
@@ -102,8 +92,14 @@ public class HLSJob implements Job {
 	}
 
 	public CreateJobResponse construirJob(JobSettings job) {
-		CreateJobRequest criarJob = CreateJobRequest.builder().role(ARN).settings(job).build();
-		return this.mediaConvertClient.createJob(criarJob);
+
+		CreateJobRequest criarJob = CreateJobRequest
+			.builder()
+			.role(ARN)
+			.settings(job)
+			.build();
+
+		return this.mediaConvert.criar().createJob(criarJob);
 	}
 
 }
