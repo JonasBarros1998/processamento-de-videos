@@ -75,6 +75,9 @@ Durante o processo de desenvolvimento, tive que entender o objetivo geral de alg
 
 [codec h264 vs h265](https://aws.amazon.com/pt/media/tech/high-efficiency-video-coding/)
 
+[configuração do codec 264, taxa de bits e resolução](https://github.com/JonasBarros1998/processamento-de-videos/blob/main/src/main/java/com/br/stream/processamentoDeVideo/infra/processarMidias/gruposDeSaida/AppleHLSH264.java)
+
+[configuração do segmento](https://github.com/JonasBarros1998/processamento-de-videos/blob/main/src/main/java/com/br/stream/processamentoDeVideo/infra/processarMidias/gruposDeSaida/AppleHLSContainer.java) 
 
 
 
