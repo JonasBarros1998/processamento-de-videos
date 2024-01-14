@@ -15,7 +15,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
 @ActiveProfiles("test")
-class AppleHLSContainerTest {
+public class AppleHLSContainerTest {
 
 	@Mock
 	EndpointS3 endpointS3;
@@ -29,7 +29,7 @@ class AppleHLSContainerTest {
 	}
 
 	@Test
-	void deveCriarUmNovoContainerParaProcessamentoDeMidiasDoTipoAppleHLS() {
+	public void deveCriarUmNovoContainerParaProcessamentoDeMidiasDoTipoAppleHLS() {
 		//Arrange
 		var resolucao480P = new AppleHLSH264(
 			"_264_480p",

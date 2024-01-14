@@ -17,7 +17,7 @@ public class TrilhasDeAudioTest {
 	TrilhasDeAudio trilhasDeAudio = new TrilhasDeAudio();
 
 	@Test
-	void deveCriarAsTrilhasDeAudio() {
+	public void deveCriarAsTrilhasDeAudio() {
 		//Arrange
 		var audio = new HashMap<String, AudioSelector>();
 		audio.put("Audio Selector 1",

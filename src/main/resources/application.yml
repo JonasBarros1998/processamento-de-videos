@@ -1,0 +1,12 @@
+aplicacao:
+  s3:
+    buckets:
+      videos-processados: "videos-processados-v2"
+      videos-nao-processados: "videos-nao-processados-v2"
+  iam:
+    arn: "arn:aws:iam::700552527916:role/processamento_de_videos_mediaconverter"
+server:
+  port: 8082
+
+
+

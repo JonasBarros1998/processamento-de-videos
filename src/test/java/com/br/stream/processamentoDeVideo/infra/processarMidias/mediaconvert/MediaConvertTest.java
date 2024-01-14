@@ -14,7 +14,7 @@ import static org.mockito.Mockito.when;
 
 @SpringBootTest
 @ActiveProfiles("test")
-class MediaConvertTest {
+public class MediaConvertTest {
 
 	MediaConvert mediaConvert;
 
@@ -32,7 +32,7 @@ class MediaConvertTest {
 	}
 
 	@Test
-	void deveCriarOAmbienteInicialDoMediaConvertParaIniciarOProcessamentoDasMidias() {
+	public void deveCriarOAmbienteInicialDoMediaConvertParaIniciarOProcessamentoDasMidias() {
 		//Act
 		MediaConvertClient mediaConvertClient = mediaConvert.criar();
 

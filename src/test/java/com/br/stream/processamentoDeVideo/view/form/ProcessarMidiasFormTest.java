@@ -7,10 +7,10 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class ProcessarMidiasFormTest {
 
 	@Test
-	void deveRetornarONomeDaMidia() {
-		var processarMidias = new ProcessarMidiasForm("midia-test.mp4");
+	public void deveRetornarONomeDaMidia() {
+		var processarMidias = new ProcessarMidiasForm("video/video-test", "video-test.mp4");
 
-		assertThat(processarMidias.nomeDaMidia()).isEqualTo("midia-test.mp4");
+		assertThat(processarMidias.nomeDaMidia()).isEqualTo("video-test.mp4");
 	}
 
 }

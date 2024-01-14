@@ -11,7 +11,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
 @ActiveProfiles("test")
-class AppleHLSH264Test {
+public class AppleHLSH264Test {
 
 	static AppleHLSH264 appleHLSH264;
 

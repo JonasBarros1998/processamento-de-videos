@@ -9,20 +9,20 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @ActiveProfiles(value = "test")
 @SpringBootTest
-class ProcessarMidiasDTOTest {
+public class ProcessarMidiasDTOTest {
 
 	@Test
-	void deveConverterProcessarMidiasFormParaProcessarMidiasDTO() {
+	public void deveConverterProcessarMidiasFormParaProcessarMidiasDTO() {
 
 		//Arrange
-		var processarMidasForm = new ProcessarMidiasForm("video-test.mp4");
+		var processarMidasForm = new ProcessarMidiasForm("video/video-test", "video-test.mp4");
 
 		//Act
 		var processarMidias = ProcessarMidiasDTO
 			.converterProcessarMidiasFormParaProcessarMidiasDTO(processarMidasForm);
 
 		//Assert
-		assertThat(processarMidias.getProcessarMidias()).isEqualTo("video-test.mp4");
+		assertThat(processarMidias.getLocalizacao()).isEqualTo("video/video-test");
 		assertThat(processarMidias).isInstanceOf(ProcessarMidiasDTO.class);
 
 	}

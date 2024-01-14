@@ -15,10 +15,10 @@ public class EndpointS3Test {
 	@Autowired
 	EndpointS3 endpointS3;
 
-	String nomeDaMidia = "midia-teste.mp4";
+	String nomeDaMidia = "midia-teste";
 
 	@Test
-	void deveCriarEndpointDeEntradaParaBuscarAMidiaNoBucketS3() {
+	public void deveCriarEndpointDeEntradaParaBuscarAMidiaNoBucketS3() {
 		//Arrange
 		this.endpointS3.setNomeDaMidiaOriginal(nomeDaMidia);
 
@@ -30,7 +30,7 @@ public class EndpointS3Test {
 	}
 
 	@Test
-	void deveCriarEndpointParaSalvarMidiaNoBucketAposElaSerProcessada() {
+	public void deveCriarEndpointParaSalvarMidiaNoBucketAposElaSerProcessada() {
 		//Arrange
 		this.endpointS3.setNomeDaMidiaOriginal(nomeDaMidia);
 
@@ -38,12 +38,15 @@ public class EndpointS3Test {
 		String endpoint = this.endpointS3.criarEndpointDeSaida();
 
 		//Assert
-		assertThat(endpoint).contains("s3://midias-processadas-testes/midia-teste.mp4");
+		assertThat(endpoint).contains("s3://midias-processadas-testes/midia-teste/");
 	}
 
 	@Test
-	void deveRetornarONomeDaMidia() {
-		assertThat(this.endpointS3.getNomeDaMidiaOriginal()).isEqualTo("midia-teste.mp4");
+	public void deveRetornarONomeDaMidia() {
+		//Arrange
+		this.endpointS3.setNomeDaMidiaOriginal(nomeDaMidia);
+
+		assertThat(this.endpointS3.getNomeDaMidiaOriginal()).isEqualTo("midia-teste");
 	}
 
 }

@@ -10,11 +10,13 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.UUID;
+
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @ActiveProfiles(value = "test")
-class ProcessarVideosControllerTest {
+public class ProcessarVideosControllerTest {
 
 	AutoCloseable mock;
 
@@ -35,9 +37,10 @@ class ProcessarVideosControllerTest {
 	}
 
 	@Test
-	void deveChamarOMetodoCriarNovoJob() {
+	public void deveChamarOMetodoCriarNovoJob() {
 		//Arrange
-		var processarMidiasForm = new ProcessarMidiasForm("midia-test.mp4");
+		var destino = "%s/midia-test.mp4".formatted(UUID.randomUUID().toString());
+		var processarMidiasForm = new ProcessarMidiasForm(destino, "midia-test.mp4");
 
 		//Act
 		this.processarMidiasController.processarVideos(processarMidiasForm);

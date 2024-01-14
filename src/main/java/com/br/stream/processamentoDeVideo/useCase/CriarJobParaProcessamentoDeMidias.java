@@ -19,7 +19,8 @@ public class CriarJobParaProcessamentoDeMidias {
 
 	public void criarNovoJob(ProcessarMidiasForm processarMidiasForm) {
 		var processarMidiasDTO = ProcessarMidiasDTO.converterProcessarMidiasFormParaProcessarMidiasDTO(processarMidiasForm);
-		var processarVideos = new ProcessarVideos(processarMidiasDTO.getProcessarMidias());
+		var processarVideos = new ProcessarVideos(processarMidiasDTO.getLocalizacao());
+
 		this.midiaJob.criar(processarVideos.getNomeDaMidia());
 	}
 

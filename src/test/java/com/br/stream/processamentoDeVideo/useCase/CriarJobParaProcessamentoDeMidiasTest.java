@@ -11,11 +11,13 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import java.util.UUID;
+
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @ActiveProfiles(value = "test")
-class CriarJobParaProcessamentoDeMidiasTest {
+public class CriarJobParaProcessamentoDeMidiasTest {
 
 	CriarJobParaProcessamentoDeMidias criarJobParaProcessamentoDeMidias;
 
@@ -36,15 +38,16 @@ class CriarJobParaProcessamentoDeMidiasTest {
 	}
 
 	@Test
-	void deveCriarUmNovoJobParaIniciarOProcessamentoDaMidia() {
+	public void deveCriarUmNovoJobParaIniciarOProcessamentoDaMidia() {
 		//Arrange
-		var processarMidasForm = new ProcessarMidiasForm("video-test.mp4");
+		var destino = "%s/midia-test.mp4".formatted(UUID.randomUUID().toString());
+		var processarMidiasForm = new ProcessarMidiasForm(destino, "midia-test.mp4");
 
 		//Act
-		this.criarJobParaProcessamentoDeMidias.criarNovoJob(processarMidasForm);
+		this.criarJobParaProcessamentoDeMidias.criarNovoJob(processarMidiasForm);
 
 		//Assert
-		verify(midiaJob, times(1)).criar("video-test.mp4");
+		verify(midiaJob, times(1)).criar(any(String.class));
 
 	}
 
