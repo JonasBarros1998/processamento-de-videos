@@ -1,12 +1,11 @@
 aplicacao:
   s3:
     buckets:
-      videos-processados: "videos-processados-v2"
-      videos-nao-processados: "videos-nao-processados-v2"
+      videos-processados: "midias-processadas-testes"
+      videos-nao-processados: "midias-nao-processadas-testes"
   iam:
-    arn: "arn:aws:iam::700552527916:role/processamento_de_videos_mediaconverter"
+    arn: "arn:aws:iam::000000000000:role/processamento_de_videos_test"
 server:
   port: 8082
-
 
 
